@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
   createMeteor()
+  this.addEventListener('keydown', controlShip)
   setInterval(tick, 50)
 })
 
@@ -33,4 +34,56 @@ function moveMeteors() {
       meteor.style.top = `${newTop}px`
     }
   }
+}
+
+function controlShip(event) {
+  const key = event.key.toLowerCase()
+
+  const keyMap = {
+    w: () => {
+      move('up')
+    },
+    arrowup: () => {
+      move('up')
+    },
+    s: () => {
+      move('down')
+    },
+    arrowdown: () => {
+      move('down')
+    },
+    a: () => {
+      move('left')
+    },
+    arrowleft: () => {
+      move('left')
+    },
+    d: () => {
+      move('right')
+    },
+    arrowright: () => {
+      move('right')
+    },
+  }
+  console.log(key)
+
+  keyMap[key] ? keyMap[key]() : ''
+}
+
+function move(direction) {
+  const directionMapping = {
+    up: { bottom: 1, left: 0 },
+    down: { bottom: -1, left: 0 },
+    left: { bottom: 0, left: -1 },
+    right: { bottom: 0, left: 1 },
+  }
+
+  const ship = document.getElementById('ship')
+
+  ship.style.bottom = `${
+    +ship.style.bottom.slice(0, -1) + directionMapping[direction].bottom
+  }%`
+  ship.style.left = `${
+    +ship.style.left.slice(0, -1) + directionMapping[direction].left
+  }%`
 }

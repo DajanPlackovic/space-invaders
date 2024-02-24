@@ -1,0 +1,28 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+#game-area {
+  background-color: black;
+  width: clamp(200px, 80vw, 800px);
+  height: clamp(200px, 80vh, 800px);
+  position: relative;
+}
+
+#ship {
+  width: 30px;
+  height: 30px;
+  background-color: white;
+  position: absolute;
+  bottom: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+}

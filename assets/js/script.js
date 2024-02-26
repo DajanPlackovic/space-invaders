@@ -18,6 +18,7 @@ function main() {
 
   function tick() {
     moveMeteors()
+    move()
   }
 
   /**
@@ -79,21 +80,26 @@ function main() {
     controlShip(event, false)
   }
 
-  function move(direction) {
+  function move() {
+    let outcome = { bottom: 0, left: 0 }
+
     const directionMapping = {
-      up: { bottom: 1, left: 0 },
-      down: { bottom: -1, left: 0 },
-      left: { bottom: 0, left: -1 },
-      right: { bottom: 0, left: 1 },
+      moveUp: { bottom: 1, left: 0 },
+      moveDown: { bottom: -1, left: 0 },
+      moveLeft: { bottom: 0, left: -1 },
+      moveRight: { bottom: 0, left: 1 },
     }
+
+    Object.keys(directionMapping).forEach((direction) => {
+      if (gameState[direction]) {
+        outcome.bottom += directionMapping[direction].bottom
+        outcome.left += directionMapping[direction].left
+      }
+    })
 
     const ship = document.getElementById('ship')
 
-    ship.style.bottom = `${
-      +ship.style.bottom.slice(0, -1) + directionMapping[direction].bottom
-    }%`
-    ship.style.left = `${
-      +ship.style.left.slice(0, -1) + directionMapping[direction].left
-    }%`
+    ship.style.bottom = `${+ship.style.bottom.slice(0, -1) + outcome.bottom}%`
+    ship.style.left = `${+ship.style.left.slice(0, -1) + outcome.left}%`
   }
 }

@@ -9,8 +9,6 @@ function main() {
     meteorCount: 0,
   }
 
-  createMeteor()
-
   this.addEventListener('keydown', controlShipStart)
   this.addEventListener('keyup', controlShipStop)
 
@@ -20,6 +18,7 @@ function main() {
    * Modifies display based on game state every tick
    */
   function tick() {
+    createMeteor()
     moveMeteors()
     move()
   }
@@ -28,11 +27,14 @@ function main() {
    * Creates a meteor with a random X position at the top of the game area
    */
   function createMeteor() {
-    let newMeteor = document.createElement('div')
-    newMeteor.className = 'meteor'
-    newMeteor.style.top = '0px'
-    newMeteor.style.left = `${Math.random() * 90}%`
-    document.getElementById('game-area').appendChild(newMeteor)
+    if (gameState.meteorCount < 10) {
+      gameState.meteorCount++
+      let newMeteor = document.createElement('div')
+      newMeteor.className = 'meteor'
+      newMeteor.style.top = '0px'
+      newMeteor.style.left = `${Math.random() * 90}%`
+      document.getElementById('game-area').appendChild(newMeteor)
+    }
   }
 
   /**
@@ -48,6 +50,7 @@ function main() {
     for (meteor of meteors) {
       const newTop = +meteor.style.top.slice(0, -2) + 10
       if (newTop > disappearingHeight) {
+        gameState.meteorCount--
         meteor.remove()
       } else {
         meteor.style.top = `${newTop}px`

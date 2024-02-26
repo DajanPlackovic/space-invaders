@@ -125,6 +125,9 @@ function main() {
       }
     })
 
+    if (outcome.bottom === 0) outcome.left * 2
+    if (outcome.left === 0) outcome.bottom * 2
+
     const ship = document.getElementById('ship')
 
     ship.style.bottom = `${+ship.style.bottom.slice(0, -1) + outcome.bottom}%`

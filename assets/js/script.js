@@ -27,7 +27,7 @@ function main() {
    * Creates a meteor with a random X position at the top of the game area
    */
   function createMeteor() {
-    if (gameState.meteorCount < 10) {
+    if (gameState.meteorCount < 10 && Math.random() > 0.4) {
       gameState.meteorCount++
       let newMeteor = document.createElement('div')
       newMeteor.className = 'meteor'

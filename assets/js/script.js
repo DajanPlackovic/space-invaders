@@ -20,7 +20,7 @@ function main() {
   function tick() {
     createMeteor()
     moveMeteors()
-    move()
+    moveShip()
   }
 
   /**
@@ -108,7 +108,7 @@ function main() {
   /**
    * Moves the ship on the screen each tick based on current game state
    */
-  function move() {
+  function moveShip() {
     let outcome = { bottom: 0, left: 0 }
 
     const directionMapping = {

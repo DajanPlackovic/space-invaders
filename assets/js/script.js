@@ -16,6 +16,9 @@ function main() {
 
   setInterval(tick, 50)
 
+  /**
+   * Modifies display based on game state every tick
+   */
   function tick() {
     moveMeteors()
     move()
@@ -32,6 +35,9 @@ function main() {
     document.getElementById('game-area').appendChild(newMeteor)
   }
 
+  /**
+   * Moves meteors down towards the bottom of the game area
+   */
   function moveMeteors() {
     const disappearingHeight =
       +window
@@ -49,6 +55,12 @@ function main() {
     }
   }
 
+  /**
+   * Modifies game state to account for movement control input from player
+   *
+   * @param {event} event
+   * @param {boolean} newState
+   */
   function controlShip(event, newState) {
     const key = event.key.toLowerCase()
 
@@ -72,14 +84,27 @@ function main() {
     console.log(gameState)
   }
 
+  /**
+   * Applies controlShip when key is pressed
+   *
+   * @param {event} event
+   */
   function controlShipStart(event) {
     controlShip(event, true)
   }
 
+  /**
+   * Applies controlShip when key is no longer pressed
+   *
+   * @param {event} event
+   */
   function controlShipStop(event) {
     controlShip(event, false)
   }
 
+  /**
+   * Moves the ship on the screen each tick based on current game state
+   */
   function move() {
     let outcome = { bottom: 0, left: 0 }
 

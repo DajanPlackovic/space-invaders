@@ -21,6 +21,7 @@ function main() {
     createMeteor()
     moveMeteors()
     moveShip()
+    detectCollisions()
   }
 
   /**
@@ -133,4 +134,42 @@ function main() {
     ship.style.bottom = `${+ship.style.bottom.slice(0, -1) + outcome.bottom}%`
     ship.style.left = `${+ship.style.left.slice(0, -1) + outcome.left}%`
   }
+}
+
+function detectCollisions() {
+  const ship = document.getElementById('ship')
+
+  const shipHitbox = makeHitbox(ship)
+
+  const meteors = document.getElementsByClassName('meteor')
+
+  for (meteor of meteors) {
+    const meteorHitbox = makeHitbox(meteor)
+
+    const calculatedDistance = Math.sqrt(
+      (shipHitbox.x - meteorHitbox.x) ** 2 +
+        (shipHitbox.y - meteorHitbox.y) ** 2
+    )
+
+    if (calculatedDistance < shipHitbox.r + meteorHitbox.r) {
+      console.log(`DIST_CALC: ${calculatedDistance}`)
+      console.log('WE GOT HIT! ABANDON SHIP!')
+    }
+  }
+}
+
+function makeHitbox(object) {
+  const rect = object.getBoundingClientRect()
+
+  const centerWidth = (rect.right - rect.left) / 2
+  const centerHeight = (rect.bottom - rect.top) / 2
+
+  const hitbox = {
+    x: rect.right + centerHeight,
+    y: rect.bottom + centerWidth,
+  }
+
+  hitbox.r = Math.min(centerHeight, centerWidth)
+
+  return hitbox
 }

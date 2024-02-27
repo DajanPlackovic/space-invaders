@@ -131,8 +131,17 @@ function main() {
 
     const ship = document.getElementById('ship')
 
-    ship.style.bottom = `${+ship.style.bottom.slice(0, -1) + outcome.bottom}%`
-    ship.style.left = `${+ship.style.left.slice(0, -1) + outcome.left}%`
+    let newBottom = +ship.style.bottom.slice(0, -1) + outcome.bottom
+    let newLeft = +ship.style.left.slice(0, -1) + outcome.left
+
+    // Out of bounds check
+    if (newBottom < 0) newBottom = 0
+    if (newLeft < 0) newLeft = 0
+    if (newBottom > 100) newBottom = 100
+    if (newLeft > 100) newLeft = 100
+
+    ship.style.bottom = `${newBottom}%`
+    ship.style.left = `${newLeft}%`
   }
 }
 

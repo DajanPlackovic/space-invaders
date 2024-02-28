@@ -164,8 +164,7 @@ function detectCollisions() {
     )
 
     if (calculatedDistance < shipHitbox.r + meteorHitbox.r) {
-      console.log(`DIST_CALC: ${calculatedDistance}`)
-      console.log('WE GOT HIT! ABANDON SHIP!')
+      document.getElementById('hit-message').classList.add('show')
     }
   }
 }

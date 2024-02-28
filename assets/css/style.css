@@ -17,6 +17,9 @@ body {
   height: clamp(200px, 80vh, 800px);
   position: relative;
   overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 #ship {
@@ -29,4 +32,14 @@ body {
   color: red;
   transform: rotate(-45deg);
   position: absolute;
+}
+
+#hit-message {
+  display: none;
+  color: red;
+  font-size: xx-large;
+}
+
+#hit-message.show {
+  display: block;
 }

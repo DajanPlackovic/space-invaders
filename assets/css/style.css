@@ -12,6 +12,7 @@ body {
 
 #game-area {
   background-color: black;
+  font-size: xx-large;
   width: clamp(200px, 80vw, 800px);
   height: clamp(200px, 80vh, 800px);
   position: relative;
@@ -19,16 +20,13 @@ body {
 }
 
 #ship {
-  width: 30px;
-  height: 30px;
-  background-color: white;
+  color: white;
   position: absolute;
-  transform: translateX(-50%);
+  transform: translateX(-50%) rotate(-45deg);
 }
 
 .meteor {
-  width: 30px;
-  height: 30px;
-  background-color: red;
+  color: red;
+  transform: rotate(-45deg);
   position: absolute;
 }

@@ -34,6 +34,9 @@ function main() {
       newMeteor.className = 'meteor'
       newMeteor.style.top = '0px'
       newMeteor.style.left = `${Math.random() * 90}%`
+      let meteorIcon = document.createElement('i')
+      meteorIcon.className = 'fa-solid fa-meteor'
+      newMeteor.appendChild(meteorIcon)
       document.getElementById('game-area').appendChild(newMeteor)
     }
   }

@@ -39,6 +39,16 @@ body {
   display: none;
   color: red;
   font-size: xx-large;
+  z-index: 10;
+}
+
+#hit-message__button {
+  font-size: xx-large;
+  border: none;
+  background: white;
+  color: black;
+  width: 100%;
+  font-family: inherit;
 }
 
 #hit-message.show {

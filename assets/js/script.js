@@ -12,7 +12,16 @@ function main() {
   this.addEventListener('keydown', controlShipStart)
   this.addEventListener('keyup', controlShipStop)
 
-  const gameLoop = setInterval(tick, 50)
+  let gameLoop
+
+  const ship = document.getElementById('ship')
+  const hitMessage = document.getElementById('hit-message')
+
+  startLoop()
+
+  document
+    .getElementById('hit-message__button')
+    .addEventListener('click', startLoop)
 
   /**
    * Modifies display based on game state every tick
@@ -24,6 +33,20 @@ function main() {
     detectCollisions()
   }
 
+  function startLoop() {
+    const meteors = document.getElementsByClassName('meteor')
+    for (let meteor of meteors) {
+      meteor.remove() // this does not remove all the meteors, need to fix
+    }
+    gameState.meteorCount = 0
+
+    ship.style.left = '50%'
+    ship.style.bottom = '5%'
+
+    hitMessage.classList.remove('show')
+
+    gameLoop = setInterval(tick, 50)
+  }
   /**
    * Creates a meteor with a random X position at the top of the game area
    */
@@ -130,8 +153,6 @@ function main() {
     if (outcome.bottom === 0) outcome.left * 2
     if (outcome.left === 0) outcome.bottom * 2
 
-    const ship = document.getElementById('ship')
-
     let newBottom = +ship.style.bottom.slice(0, -1) + outcome.bottom
     let newLeft = +ship.style.left.slice(0, -1) + outcome.left
 
@@ -146,8 +167,6 @@ function main() {
   }
 
   function detectCollisions() {
-    const ship = document.getElementById('ship')
-
     const shipHitbox = makeHitbox(ship)
 
     const meteors = document.getElementsByClassName('meteor')
@@ -162,7 +181,7 @@ function main() {
 
       if (calculatedDistance < shipHitbox.r + meteorHitbox.r) {
         clearInterval(gameLoop)
-        document.getElementById('hit-message').classList.add('show')
+        hitMessage.classList.add('show')
       }
     }
   }

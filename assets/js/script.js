@@ -33,10 +33,14 @@ function main() {
     detectCollisions()
   }
 
+  /**
+   * Function to start the game loop and reset the game state.
+   *
+   */
   function startLoop() {
     const meteors = document.getElementsByClassName('meteor')
-    for (let meteor of meteors) {
-      meteor.remove() // this does not remove all the meteors, need to fix
+    while (meteors.length) {
+      meteors[0].remove()
     }
     gameState.meteorCount = 0
 

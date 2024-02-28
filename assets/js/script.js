@@ -12,7 +12,7 @@ function main() {
   this.addEventListener('keydown', controlShipStart)
   this.addEventListener('keyup', controlShipStop)
 
-  setInterval(tick, 50)
+  const gameLoop = setInterval(tick, 50)
 
   /**
    * Modifies display based on game state every tick
@@ -87,8 +87,6 @@ function main() {
     if (action) {
       gameState[action] = newState
     }
-
-    console.log(gameState)
   }
 
   /**
@@ -146,41 +144,42 @@ function main() {
     ship.style.bottom = `${newBottom}%`
     ship.style.left = `${newLeft}%`
   }
-}
 
-function detectCollisions() {
-  const ship = document.getElementById('ship')
+  function detectCollisions() {
+    const ship = document.getElementById('ship')
 
-  const shipHitbox = makeHitbox(ship)
+    const shipHitbox = makeHitbox(ship)
 
-  const meteors = document.getElementsByClassName('meteor')
+    const meteors = document.getElementsByClassName('meteor')
 
-  for (meteor of meteors) {
-    const meteorHitbox = makeHitbox(meteor)
+    for (meteor of meteors) {
+      const meteorHitbox = makeHitbox(meteor)
 
-    const calculatedDistance = Math.sqrt(
-      (shipHitbox.x - meteorHitbox.x) ** 2 +
-        (shipHitbox.y - meteorHitbox.y) ** 2
-    )
+      const calculatedDistance = Math.sqrt(
+        (shipHitbox.x - meteorHitbox.x) ** 2 +
+          (shipHitbox.y - meteorHitbox.y) ** 2
+      )
 
-    if (calculatedDistance < shipHitbox.r + meteorHitbox.r) {
-      document.getElementById('hit-message').classList.add('show')
+      if (calculatedDistance < shipHitbox.r + meteorHitbox.r) {
+        clearInterval(gameLoop)
+        document.getElementById('hit-message').classList.add('show')
+      }
     }
   }
-}
 
-function makeHitbox(object) {
-  const rect = object.getBoundingClientRect()
+  function makeHitbox(object) {
+    const rect = object.getBoundingClientRect()
 
-  const centerWidth = (rect.right - rect.left) / 2
-  const centerHeight = (rect.bottom - rect.top) / 2
+    const centerWidth = (rect.right - rect.left) / 2
+    const centerHeight = (rect.bottom - rect.top) / 2
 
-  const hitbox = {
-    x: rect.right + centerHeight,
-    y: rect.bottom + centerWidth,
+    const hitbox = {
+      x: rect.right + centerHeight,
+      y: rect.bottom + centerWidth,
+    }
+
+    hitbox.r = Math.min(centerHeight, centerWidth)
+
+    return hitbox
   }
-
-  hitbox.r = Math.min(centerHeight, centerWidth)
-
-  return hitbox
 }

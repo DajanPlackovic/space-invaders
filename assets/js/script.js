@@ -201,7 +201,7 @@ function main() {
       y: rect.bottom + centerWidth,
     }
 
-    hitbox.r = Math.min(centerHeight, centerWidth)
+    hitbox.r = Math.min(centerHeight, centerWidth) * 0.5
 
     return hitbox
   }

@@ -79,26 +79,26 @@ body {
   cursor: pointer;
 }
 
-#up {
+#arrowup {
   grid-column: 2;
   grid-row: 1;
 }
 
-#down {
+#arrowdown {
   grid-column: 2;
   grid-row: 3;
 }
 
-#left,
-#right {
+#arrowleft,
+#arrowright {
   grid-row: 2;
 }
 
-#left {
+#arrowleft {
   grid-column: 1;
 }
 
-#right {
+#arrowright {
   grid-column: 3;
 }
 

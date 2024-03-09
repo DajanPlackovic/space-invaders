@@ -12,6 +12,12 @@ function main() {
   this.addEventListener('keydown', controlShipStart)
   this.addEventListener('keyup', controlShipStop)
 
+  const controls = document.getElementsByClassName('control')
+  for (control of controls) {
+    control.addEventListener('mousedown', controlShipStart)
+    control.addEventListener('mouseup', controlShipStop)
+  }
+
   let gameLoop
 
   const ship = document.getElementById('ship')
@@ -96,7 +102,14 @@ function main() {
    * @param {boolean} newState
    */
   function controlShip(event, newState) {
-    const key = event.key.toLowerCase()
+    let key
+
+    if (event.key) {
+      key = event.key.toLowerCase()
+    } else {
+      key = event.currentTarget.id
+      console.log(key)
+    }
 
     const keyMap = {
       w: 'moveUp',

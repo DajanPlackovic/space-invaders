@@ -108,7 +108,6 @@ function main() {
       key = event.key.toLowerCase()
     } else {
       key = event.currentTarget.id
-      console.log(key)
     }
 
     const keyMap = {

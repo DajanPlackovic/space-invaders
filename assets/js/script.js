@@ -15,7 +15,9 @@ function main() {
   const controls = document.getElementsByClassName('control')
   for (control of controls) {
     control.addEventListener('mousedown', controlShipStart)
+    control.addEventListener('touchstart', controlShipStart)
     control.addEventListener('mouseup', controlShipStop)
+    control.addEventListener('touchend', controlShipStop)
   }
 
   let gameLoop

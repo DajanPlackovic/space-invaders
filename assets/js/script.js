@@ -52,6 +52,7 @@ function main() {
       meteors[0].remove()
     }
     gameState.currentMeteorCount = 0
+    gameState.currentMaximumMeteorCount = 10
 
     ship.style.left = '50%'
     ship.style.bottom = '5%'

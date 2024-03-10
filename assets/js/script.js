@@ -10,6 +10,7 @@ function main() {
     totalMeteorCount: 0,
     currentMaximumMeteorCount: 10,
     tickFrequency: 50,
+    round: 1,
   }
 
   this.addEventListener('keydown', controlShipStart)
@@ -54,6 +55,7 @@ function main() {
     gameState.currentMeteorCount = 0
     gameState.currentMaximumMeteorCount = 10
     gameState.tickFrequency = 50
+    gameState.round = 1
 
     ship.style.left = '50%'
     ship.style.bottom = '5%'
@@ -242,6 +244,7 @@ function main() {
       gameState.currentMaximumMeteorCount++
       gameState.totalMeteorCount = 0
       gameState.tickFrequency--
+      gameState.round++
 
       roundMessage.innerHTML = `Round ${gameState.round}`
       roundMessage.classList.add('show')

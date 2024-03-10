@@ -27,6 +27,7 @@ function main() {
 
   const ship = document.getElementById('ship')
   const hitMessage = document.getElementById('hit-message')
+  const roundMessage = document.getElementById('round-message')
 
   restartGame()
 
@@ -239,6 +240,12 @@ function main() {
       gameState.currentMaximumMeteorCount++
       gameState.totalMeteorCount = 0
       gameState.tickFrequency--
+
+      roundMessage.innerHTML = `Round ${gameState.round}`
+      roundMessage.classList.add('show')
+      setTimeout(() => {
+        roundMessage.classList.remove('show')
+      }, 1000)
 
       startLoop(tick, gameState.tickFrequency)
     }

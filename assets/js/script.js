@@ -6,7 +6,10 @@ function main() {
     moveDown: false,
     moveLeft: false,
     moveRight: false,
-    meteorCount: 0,
+    currentMeteorCount: 0,
+    totalMeteorCount: 0,
+    currentMaximumMeteorCount: 10,
+    tickFrequency: 50,
   }
 
   this.addEventListener('keydown', controlShipStart)
@@ -25,11 +28,11 @@ function main() {
   const ship = document.getElementById('ship')
   const hitMessage = document.getElementById('hit-message')
 
-  startLoop()
+  restartGame()
 
   document
     .getElementById('hit-message__button')
-    .addEventListener('click', startLoop)
+    .addEventListener('click', restartGame)
 
   /**
    * Modifies display based on game state every tick
@@ -39,6 +42,22 @@ function main() {
     moveMeteors()
     moveShip()
     detectCollisions()
+    increaseRound()
+  }
+
+  function restartGame() {
+    const meteors = document.getElementsByClassName('meteor')
+    while (meteors.length) {
+      meteors[0].remove()
+    }
+    gameState.currentMeteorCount = 0
+
+    ship.style.left = '50%'
+    ship.style.bottom = '5%'
+
+    hitMessage.classList.remove('show')
+
+    startLoop()
   }
 
   /**
@@ -46,25 +65,18 @@ function main() {
    *
    */
   function startLoop() {
-    const meteors = document.getElementsByClassName('meteor')
-    while (meteors.length) {
-      meteors[0].remove()
-    }
-    gameState.meteorCount = 0
-
-    ship.style.left = '50%'
-    ship.style.bottom = '5%'
-
-    hitMessage.classList.remove('show')
-
-    gameLoop = setInterval(tick, 50)
+    gameLoop = setInterval(tick, gameState.tickFrequency)
   }
   /**
    * Creates a meteor with a random X position at the top of the game area
    */
   function createMeteor() {
-    if (gameState.meteorCount < 10 && Math.random() > 0.4) {
-      gameState.meteorCount++
+    if (
+      gameState.currentMeteorCount < gameState.currentMaximumMeteorCount &&
+      Math.random() > 0.4
+    ) {
+      gameState.currentMeteorCount++
+      gameState.totalMeteorCount++
       let newMeteor = document.createElement('div')
       newMeteor.className = 'meteor'
       newMeteor.style.top = '0px'
@@ -89,7 +101,7 @@ function main() {
     for (meteor of meteors) {
       const newTop = +meteor.style.top.slice(0, -2) + 10
       if (newTop > disappearingHeight) {
-        gameState.meteorCount--
+        gameState.currentMeteorCount--
         meteor.remove()
       } else {
         meteor.style.top = `${newTop}px`
@@ -218,5 +230,17 @@ function main() {
     hitbox.r = Math.min(centerHeight, centerWidth) * 0.5
 
     return hitbox
+  }
+
+  function increaseRound() {
+    if (gameState.totalMeteorCount === 40) {
+      clearInterval(gameLoop)
+
+      gameState.currentMaximumMeteorCount++
+      gameState.totalMeteorCount = 0
+      gameState.tickFrequency--
+
+      startLoop(tick, gameState.tickFrequency)
+    }
   }
 }

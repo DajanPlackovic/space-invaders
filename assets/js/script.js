@@ -9,9 +9,12 @@ function main() {
     currentMeteorCount: 0,
     totalMeteorCount: 0,
     currentMaximumMeteorCount: 10,
+    meteorSpeed: 10,
     tickFrequency: 50,
     round: 1,
   }
+
+  const initialGameState = { ...gameState }
 
   this.addEventListener('keydown', controlShipStart)
   this.addEventListener('keyup', controlShipStop)
@@ -52,10 +55,8 @@ function main() {
     while (meteors.length) {
       meteors[0].remove()
     }
-    gameState.currentMeteorCount = 0
-    gameState.currentMaximumMeteorCount = 10
-    gameState.tickFrequency = 50
-    gameState.round = 1
+
+    gameState = { ...initialGameState }
 
     ship.style.left = '50%'
     ship.style.bottom = '5%'
@@ -104,7 +105,7 @@ function main() {
     const meteors = document.getElementsByClassName('meteor')
 
     for (meteor of meteors) {
-      const newTop = +meteor.style.top.slice(0, -2) + 10
+      const newTop = +meteor.style.top.slice(0, -2) + gameState.meteorSpeed
       if (newTop > disappearingHeight) {
         gameState.currentMeteorCount--
         meteor.remove()
@@ -245,6 +246,7 @@ function main() {
       gameState.totalMeteorCount = 0
       gameState.tickFrequency--
       gameState.round++
+      gameState.meteorSpeed++
 
       roundMessage.innerHTML = `Round ${gameState.round}`
       roundMessage.classList.add('show')

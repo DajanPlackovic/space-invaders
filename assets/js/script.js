@@ -213,14 +213,7 @@ function main() {
 
       if (calculatedDistance < shipHitbox.r + meteorHitbox.r) {
         clearInterval(gameLoop)
-        message.classList.add('show')
-        message.classList.add('hit-message')
-        message.innerHTML = `You made it to Round ${gameState.round}!
-      <button id="hit-message__button">Play Again</button>
-        `
-        document
-          .getElementById('hit-message__button')
-          .addEventListener('click', restartGame)
+        displayRestartGameMessage(`You made it to Round ${gameState.round}!`)
       }
     }
   }
@@ -245,19 +238,35 @@ function main() {
     if (gameState.totalMeteorCount === 40) {
       clearInterval(gameLoop)
 
-      gameState.currentMaximumMeteorCount++
-      gameState.totalMeteorCount = 0
-      gameState.tickFrequency--
       gameState.round++
-      gameState.meteorSpeed++
 
-      message.innerHTML = `Round ${gameState.round}`
-      message.classList.add('show')
-      setTimeout(() => {
-        message.classList.remove('show')
-      }, 1000)
+      if (gameState.round === 2) {
+        displayRestartGameMessage('Congratulations! You won!')
+      } else {
+        gameState.currentMaximumMeteorCount++
+        gameState.totalMeteorCount = 0
+        gameState.tickFrequency--
+        gameState.meteorSpeed++
 
-      startLoop(tick, gameState.tickFrequency)
+        message.innerHTML = `Round ${gameState.round}`
+        message.classList.add('show')
+        setTimeout(() => {
+          message.classList.remove('show')
+        }, 1000)
+
+        startLoop(tick, gameState.tickFrequency)
+      }
     }
+  }
+
+  function displayRestartGameMessage(text) {
+    message.classList.add('show')
+    message.classList.add('hit-message')
+    message.innerHTML = `${text}
+      <button id="hit-message__button">Play Again</button>
+        `
+    document
+      .getElementById('hit-message__button')
+      .addEventListener('click', restartGame)
   }
 }

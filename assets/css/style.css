@@ -36,14 +36,19 @@ body {
   position: absolute;
 }
 
-.message {
+#message {
   display: none;
   color: red;
   font-size: xx-large;
   z-index: 10;
 }
 
+.hit-message > #hit-message__button {
+  display: block;
+}
+
 #hit-message__button {
+  display: none;
   font-size: xx-large;
   border: none;
   background: white;
@@ -52,7 +57,7 @@ body {
   font-family: inherit;
 }
 
-.message.show {
+#message.show {
   display: block;
 }
 

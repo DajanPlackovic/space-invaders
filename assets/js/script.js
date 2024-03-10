@@ -30,14 +30,9 @@ function main() {
   let gameLoop
 
   const ship = document.getElementById('ship')
-  const hitMessage = document.getElementById('hit-message')
-  const roundMessage = document.getElementById('round-message')
+  const message = document.getElementById('message')
 
   restartGame()
-
-  document
-    .getElementById('hit-message__button')
-    .addEventListener('click', restartGame)
 
   /**
    * Modifies display based on game state every tick
@@ -61,7 +56,8 @@ function main() {
     ship.style.left = '50%'
     ship.style.bottom = '5%'
 
-    hitMessage.classList.remove('show')
+    message.classList.remove('show')
+    message.classList.remove('hit-message')
 
     startLoop()
   }
@@ -217,7 +213,14 @@ function main() {
 
       if (calculatedDistance < shipHitbox.r + meteorHitbox.r) {
         clearInterval(gameLoop)
-        hitMessage.classList.add('show')
+        message.classList.add('show')
+        message.classList.add('hit-message')
+        message.innerHTML = `You made it to Round ${gameState.round}!
+      <button id="hit-message__button">Play Again</button>
+        `
+        document
+          .getElementById('hit-message__button')
+          .addEventListener('click', restartGame)
       }
     }
   }
@@ -248,10 +251,10 @@ function main() {
       gameState.round++
       gameState.meteorSpeed++
 
-      roundMessage.innerHTML = `Round ${gameState.round}`
-      roundMessage.classList.add('show')
+      message.innerHTML = `Round ${gameState.round}`
+      message.classList.add('show')
       setTimeout(() => {
-        roundMessage.classList.remove('show')
+        message.classList.remove('show')
       }, 1000)
 
       startLoop(tick, gameState.tickFrequency)

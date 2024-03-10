@@ -53,6 +53,7 @@ function main() {
     }
     gameState.currentMeteorCount = 0
     gameState.currentMaximumMeteorCount = 10
+    gameState.tickFrequency = 50
 
     ship.style.left = '50%'
     ship.style.bottom = '5%'

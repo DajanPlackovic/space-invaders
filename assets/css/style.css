@@ -5,6 +5,9 @@
 
 body {
   display: flex;
+  background: url('../images/pexels-hristo-fidanov-1252890.webp') center
+    no-repeat;
+  background-size: cover;
   flex-direction: column;
   justify-content: center;
   align-items: center;
@@ -13,7 +16,14 @@ body {
 }
 
 #game-area {
-  background-color: black;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    56deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 67%,
+    rgba(1, 100, 120, 1) 100%
+  );
+  /* background-color: black; */
   font-size: xx-large;
   width: 300px;
   height: 500px;

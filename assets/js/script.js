@@ -12,7 +12,8 @@ function main() {
     meteorSpeed: 10,
     tickFrequency: 50,
     safety: Math.random() * 90 + 5,
-    safetyCountdown: 0,
+    moveSafetyLeft: Math.random() > 0.5,
+    moveSafetySteps: Math.ceil(Math.random() * 20 + 5),
     round: 1,
   }
 
@@ -62,7 +63,7 @@ function main() {
     animateShip()
     detectCollisions()
     increaseRound()
-    recomputeSafety()
+    moveSafety()
   }
 
   function restartGame() {
@@ -102,14 +103,14 @@ function main() {
       let newMeteor = document.createElement('div')
       newMeteor.className = 'meteor'
       newMeteor.style.top = '-30px'
+      newMeteor.style.color = roundColors[gameState.round - 1]
 
-      let position = Math.random() * 90
-      if (Math.abs(position - gameState.safety) < 5) {
-        position += 5 * (position - gameState.safety)
+      let position = Math.random() * 90 + 5
+      if (Math.abs(position - gameState.safety) < 7) {
+        position += 7 * Math.sign(position - gameState.safety)
       }
       newMeteor.style.left = `${position}%`
 
-      newMeteor.style.color = roundColors[gameState.round - 1]
       newMeteor.innerHTML = '<i class="fa-solid fa-meteor"></i>'
       document.getElementById('game-area').appendChild(newMeteor)
     }
@@ -303,17 +304,6 @@ function main() {
       .addEventListener('click', restartGame)
   }
 
-  function recomputeSafety() {
-    if (gameState.safetyCountdown < 100) {
-      gameState.safetyCountdown++
-    } else {
-      gameState.safetyCountdown = 0
-      gameState.safety = Math.random() * 80
-      // document.getElementById('safety_test').style.left = `${gameState.safety}%`
-      // console.log(gameState.safety)
-    }
-  }
-
   function animateShip() {
     if (gameState.moveLeft) {
       ship.classList.add('left')
@@ -326,5 +316,33 @@ function main() {
     } else {
       ship.classList.remove('right')
     }
+  }
+
+  function moveSafety() {
+    if (gameState.moveSafetySteps === 0) {
+      gameState.moveSafetySteps = Math.ceil(Math.random() * 20 + 5)
+      gameState.moveSafetyLeft = !gameState.moveSafetyLeft
+    }
+
+    if (!gameState.moveSafetyLeft) {
+      gameState.safety += 0.5
+    } else {
+      gameState.safety -= 0.5
+    }
+
+    if (gameState.safety > 95) {
+      gameState.safety = 95
+      gameState.moveSafetyLeft = true
+    }
+
+    if (gameState.safety < 5) {
+      gameState.safety = 5
+      gameState.moveSafetyLeft = false
+    }
+
+    document.getElementById('safety_test').style.left = `${gameState.safety}%`
+    // ship.style.left = `${gameState.safety + 5}%`
+    // ship.style.top = '0'
+    // ship.style.bottom = 'auto'
   }
 }

@@ -195,10 +195,10 @@ function main() {
     let outcome = { bottom: 0, left: 0 }
 
     const directionMapping = {
-      moveUp: { bottom: 1, left: 0 },
-      moveDown: { bottom: -1, left: 0 },
-      moveLeft: { bottom: 0, left: -1 },
-      moveRight: { bottom: 0, left: 1 },
+      moveUp: { bottom: 1.5, left: 0 },
+      moveDown: { bottom: -1.5, left: 0 },
+      moveLeft: { bottom: 0, left: -1.5 },
+      moveRight: { bottom: 0, left: 1.5 },
     }
 
     Object.keys(directionMapping).forEach((direction) => {
@@ -215,10 +215,10 @@ function main() {
     let newLeft = +ship.style.left.slice(0, -1) + outcome.left
 
     // Out of bounds check
-    if (newBottom < 0) newBottom = 0
-    if (newLeft < 5) newLeft = 5
-    if (newBottom > 90) newBottom = 90
-    if (newLeft > 95) newLeft = 95
+    if (newBottom <= 0) newBottom = 0
+    if (newLeft <= 5) newLeft = 5
+    if (newBottom >= 90) newBottom = 90
+    if (newLeft >= 95) newLeft = 95
 
     ship.style.bottom = `${newBottom}%`
     ship.style.left = `${newLeft}%`
@@ -340,7 +340,7 @@ function main() {
       gameState.moveSafetyLeft = false
     }
 
-    document.getElementById('safety_test').style.left = `${gameState.safety}%`
+    // document.getElementById('safety_test').style.left = `${gameState.safety}%`
     // ship.style.left = `${gameState.safety + 5}%`
     // ship.style.top = '0'
     // ship.style.bottom = 'auto'

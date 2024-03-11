@@ -243,7 +243,7 @@ function main() {
 
       gameState.round++
 
-      if (gameState.round === 2) {
+      if (gameState.round === 20) {
         displayRestartGameMessage('Congratulations! You won!')
       } else {
         gameState.currentMaximumMeteorCount++

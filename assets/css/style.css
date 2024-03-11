@@ -120,6 +120,14 @@ button:hover {
   font-size: 30px;
 }
 
+#ship.left {
+  transform: translateX(-50%) rotate(-55deg);
+}
+
+#ship.right {
+  transform: translateX(-50%) rotate(-35deg);
+}
+
 .meteor {
   color: red;
   transform: rotate(-45deg);

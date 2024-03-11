@@ -59,6 +59,7 @@ function main() {
     createMeteor()
     moveMeteors()
     moveShip()
+    animateShip()
     detectCollisions()
     increaseRound()
     recomputeSafety()
@@ -310,6 +311,20 @@ function main() {
       gameState.safety = Math.random() * 80
       // document.getElementById('safety_test').style.left = `${gameState.safety}%`
       // console.log(gameState.safety)
+    }
+  }
+
+  function animateShip() {
+    if (gameState.moveLeft) {
+      ship.classList.add('left')
+    } else {
+      ship.classList.remove('left')
+    }
+
+    if (gameState.moveRight) {
+      ship.classList.add('right')
+    } else {
+      ship.classList.remove('right')
     }
   }
 }

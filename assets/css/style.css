@@ -121,12 +121,14 @@ button:hover {
   color: white;
   position: absolute;
   transform: translateX(-50%) rotate(-45deg);
+  font-size: 30px;
 }
 
 .meteor {
   color: red;
   transform: rotate(-45deg);
   position: absolute;
+  font-size: 30px;
 }
 
 #message {

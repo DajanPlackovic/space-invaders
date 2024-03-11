@@ -50,17 +50,13 @@ button:hover {
   -webkit-text-fill-color: transparent;
 }
 
-/* Menu styles */
-#menu {
-  position: absolute;
-  z-index: 1000;
+#menu,
+#message {
+  padding: 0.25rem 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: red;
-  height: 90%;
-  width: 90%;
   /* From https://css.glass */
   background: rgba(255, 255, 255, 0.19);
   border-radius: 16px;
@@ -68,6 +64,14 @@ button:hover {
   backdrop-filter: blur(13.4px);
   -webkit-backdrop-filter: blur(13.4px);
   border: 1px solid rgba(255, 255, 255, 0.42);
+}
+
+/* Menu styles */
+#menu {
+  position: absolute;
+  z-index: 1000;
+  height: 90%;
+  width: 90%;
 }
 
 #menu > h1,
@@ -133,18 +137,8 @@ button:hover {
   display: block;
 }
 
-#hit-message__button {
-  display: none;
-  font-size: xx-large;
-  border: none;
-  background: white;
-  color: black;
-  width: 100%;
-  font-family: inherit;
-}
-
 #message.show {
-  display: block;
+  display: flex;
 }
 
 /* Controls styling */
@@ -154,16 +148,9 @@ button:hover {
 }
 
 .control {
-  border: none;
-  background: black;
-  color: white;
-  padding: 1em;
-  border-radius: 20%;
-}
-
-.control:hover {
-  background: grey;
-  color: black;
+  height: clamp(2rem, 5vw, 10rem);
+  width: clamp(2rem, 5vw, 10rem);
+  font-size: clamp(1rem, 2.5vw, 5rem);
 }
 
 .control,

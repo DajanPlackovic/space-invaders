@@ -265,7 +265,7 @@ function main() {
   function displayRestartGameMessage(text) {
     message.classList.add('show')
     message.classList.add('hit-message')
-    message.innerHTML = `${text}
+    message.innerHTML = `<p>${text}</p>
       <button id="hit-message__button">Play Again</button>
         `
     document

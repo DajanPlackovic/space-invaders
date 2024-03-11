@@ -11,6 +11,8 @@ function main() {
     currentMaximumMeteorCount: 10,
     meteorSpeed: 10,
     tickFrequency: 50,
+    safety: Math.random() * 90 + 5,
+    safetyCountdown: 0,
     round: 1,
   }
 
@@ -59,6 +61,7 @@ function main() {
     moveShip()
     detectCollisions()
     increaseRound()
+    recomputeSafety()
   }
 
   function restartGame() {
@@ -98,7 +101,11 @@ function main() {
       let newMeteor = document.createElement('div')
       newMeteor.className = 'meteor'
       newMeteor.style.top = '-30px'
-      newMeteor.style.left = `${Math.random() * 90}%`
+      let position = Math.random() * 90
+      if (Math.abs(position - gameState.safety) < 5) {
+        position -= position - gameState.safety
+      }
+      newMeteor.style.left = `${position}%`
       newMeteor.style.color = roundColors[gameState.round - 1]
       newMeteor.innerHTML = '<i class="fa-solid fa-meteor"></i>'
       document.getElementById('game-area').appendChild(newMeteor)
@@ -285,5 +292,14 @@ function main() {
     document
       .getElementById('hit-message__button')
       .addEventListener('click', restartGame)
+  }
+
+  function recomputeSafety() {
+    if (gameState.safetyCountdown < 20) {
+      gameState.safetyCountdown++
+    } else {
+      gameState.safetyCountdown = 0
+      gameState.safety = Math.random() * 80
+    }
   }
 }

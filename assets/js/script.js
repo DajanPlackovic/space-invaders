@@ -101,11 +101,13 @@ function main() {
       let newMeteor = document.createElement('div')
       newMeteor.className = 'meteor'
       newMeteor.style.top = '-30px'
+
       let position = Math.random() * 90
       if (Math.abs(position - gameState.safety) < 5) {
-        position -= position - gameState.safety
+        position += 5 * (position - gameState.safety)
       }
       newMeteor.style.left = `${position}%`
+
       newMeteor.style.color = roundColors[gameState.round - 1]
       newMeteor.innerHTML = '<i class="fa-solid fa-meteor"></i>'
       document.getElementById('game-area').appendChild(newMeteor)
@@ -295,11 +297,13 @@ function main() {
   }
 
   function recomputeSafety() {
-    if (gameState.safetyCountdown < 20) {
+    if (gameState.safetyCountdown < 100) {
       gameState.safetyCountdown++
     } else {
       gameState.safetyCountdown = 0
       gameState.safety = Math.random() * 80
+      document.getElementById('safety_test').style.left = `${gameState.safety}%`
+      console.log(gameState.safety)
     }
   }
 }

@@ -47,6 +47,8 @@ body {
     #ff0016 100%
   );
   /* color: #de466c; */
+  background-clip: text;
+  color: transparent;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }

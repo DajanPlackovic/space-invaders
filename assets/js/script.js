@@ -84,7 +84,7 @@ function main() {
       gameState.totalMeteorCount++
       let newMeteor = document.createElement('div')
       newMeteor.className = 'meteor'
-      newMeteor.style.top = '0px'
+      newMeteor.style.top = '-30px'
       newMeteor.style.left = `${Math.random() * 90}%`
       let meteorIcon = document.createElement('i')
       meteorIcon.className = 'fa-solid fa-meteor'

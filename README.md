@@ -39,3 +39,6 @@ You can now use the `heroku` CLI program - try running `heroku apps` to confirm 
 Happy coding!
 
 Bg image from: https://www.pexels.com/photo/milky-way-galaxy-during-nighttime-1252890/
+Glass effect from: https://css.glass/
+Text mask from: https://www.frontendhero.dev/tutorial/mask-text-with-image/
+Text gradient: https://www.eggradients.com/gradient/empty-words

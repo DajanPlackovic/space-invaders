@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&display=swap');
+
 * {
   padding: 0;
   margin: 0;
@@ -12,9 +14,49 @@ body {
   justify-content: center;
   align-items: center;
   padding: 2rem;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inconsolata', Arial, Helvetica, sans-serif;
 }
 
+/* Menu styles */
+#menu {
+  position: absolute;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: red;
+  height: 90%;
+  width: 90%;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.19);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(13.4px);
+  -webkit-backdrop-filter: blur(13.4px);
+  border: 1px solid rgba(255, 255, 255, 0.42);
+}
+
+#menu > h1,
+#menu > ul {
+  background-color: #ffcb43;
+  background-image: linear-gradient(
+    319deg,
+    #ffcb43 0%,
+    #ff6425 37%,
+    #ff0016 100%
+  );
+  /* color: #de466c; */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#menu > ul {
+  list-style-type: none;
+  text-align: center;
+}
+
+/* Game styles */
 #game-area {
   background: rgb(2, 0, 36);
   background: linear-gradient(
@@ -23,7 +65,6 @@ body {
     rgba(9, 9, 121, 1) 67%,
     rgba(1, 100, 120, 1) 100%
   );
-  /* background-color: black; */
   font-size: xx-large;
   width: 300px;
   height: 500px;

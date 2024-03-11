@@ -15,6 +15,7 @@ body {
   align-items: center;
   padding: 2rem;
   font-family: 'Inconsolata', Arial, Helvetica, sans-serif;
+  overflow-y: hidden;
 }
 
 /* Menu styles */
@@ -114,6 +115,7 @@ body {
   display: block;
 }
 
+/* Controls styling */
 #controls {
   display: grid;
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
@@ -169,5 +171,11 @@ body {
 @media screen and (min-width: 1024px) {
   #game-area {
     width: 700px;
+  }
+}
+
+@media screen and (max-height: 600px) {
+  body {
+    flex-direction: row;
   }
 }

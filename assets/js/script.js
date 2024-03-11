@@ -32,7 +32,10 @@ function main() {
   const ship = document.getElementById('ship')
   const message = document.getElementById('message')
 
-  restartGame()
+  document.getElementById('start-button').addEventListener('click', () => {
+    restartGame()
+    document.getElementById('menu').style = 'display: none;'
+  })
 
   /**
    * Modifies display based on game state every tick

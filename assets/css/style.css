@@ -18,6 +18,38 @@ body {
   overflow-y: hidden;
 }
 
+button {
+  color: #fff;
+  font-family: inherit;
+  font-size: xxx-large;
+  padding: 0.2em 0.5em;
+  margin: 0.3em;
+  cursor: pointer;
+  /* From https://css.glass */
+  background: rgba(1, 1, 1, 0.53);
+  border-radius: 4px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(15.8px);
+  -webkit-backdrop-filter: blur(15.8px);
+  border: 1px solid rgba(1, 1, 1, 0.42);
+  transition: all 200ms ease-in-out;
+}
+
+button:hover {
+  background-color: #ffcb43;
+  background-image: linear-gradient(
+    319deg,
+    #ffcb43 0%,
+    #ff6425 37%,
+    #ff0016 100%
+  );
+  /* color: #de466c; */
+  background-clip: text;
+  color: transparent;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* Menu styles */
 #menu {
   position: absolute;

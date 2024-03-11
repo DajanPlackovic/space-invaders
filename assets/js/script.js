@@ -14,6 +14,19 @@ function main() {
     round: 1,
   }
 
+  const roundColors = [
+    '#ffb700',
+    '#ffaa00',
+    '#ff9d00',
+    '#ff8f00',
+    '#ff8100',
+    '#ff7100',
+    '#ff6100',
+    '#fe4d00',
+    '#fd3500',
+    '#fb0404',
+  ]
+
   const initialGameState = { ...gameState }
 
   this.addEventListener('keydown', controlShipStart)
@@ -86,6 +99,7 @@ function main() {
       newMeteor.className = 'meteor'
       newMeteor.style.top = '-30px'
       newMeteor.style.left = `${Math.random() * 90}%`
+      newMeteor.style.color = roundColors[gameState.round - 1]
       newMeteor.innerHTML = '<i class="fa-solid fa-meteor"></i>'
       document.getElementById('game-area').appendChild(newMeteor)
     }
@@ -252,6 +266,7 @@ function main() {
 
         message.innerHTML = `Round ${gameState.round}`
         message.classList.add('show')
+        message.style.color = roundColors[gameState.round - 1]
         setTimeout(() => {
           message.classList.remove('show')
         }, 1000)

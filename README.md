@@ -42,3 +42,4 @@ Bg image from: https://www.pexels.com/photo/milky-way-galaxy-during-nighttime-12
 Glass effect from: https://css.glass/
 Text mask from: https://www.frontendhero.dev/tutorial/mask-text-with-image/
 Text gradient: https://www.eggradients.com/gradient/empty-words
+Generate round colors: https://colordesigner.io/gradient-generator

@@ -215,6 +215,7 @@ function main() {
       )
 
       if (calculatedDistance < shipHitbox.r + meteorHitbox.r) {
+        meteor.innerHTML = '<i class="fa-solid fa-burst"></i>'
         clearInterval(gameLoop)
         displayRestartGameMessage(`You made it to Round ${gameState.round}!`)
       }

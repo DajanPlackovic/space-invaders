@@ -302,8 +302,8 @@ function main() {
     } else {
       gameState.safetyCountdown = 0
       gameState.safety = Math.random() * 80
-      document.getElementById('safety_test').style.left = `${gameState.safety}%`
-      console.log(gameState.safety)
+      // document.getElementById('safety_test').style.left = `${gameState.safety}%`
+      // console.log(gameState.safety)
     }
   }
 }

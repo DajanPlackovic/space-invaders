@@ -193,9 +193,9 @@ function main() {
 
     // Out of bounds check
     if (newBottom < 0) newBottom = 0
-    if (newLeft < 0) newLeft = 0
-    if (newBottom > 100) newBottom = 100
-    if (newLeft > 100) newLeft = 100
+    if (newLeft < 5) newLeft = 5
+    if (newBottom > 90) newBottom = 90
+    if (newLeft > 95) newLeft = 95
 
     ship.style.bottom = `${newBottom}%`
     ship.style.left = `${newLeft}%`

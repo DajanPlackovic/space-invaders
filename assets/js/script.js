@@ -65,9 +65,9 @@ function main() {
     increaseRound()
     moveSafety()
 
-    document.getElementById(
-      'game-area'
-    ).style.backgroundPositionY = `${++gameState.bgPosition}%`
+    document.getElementById('game-area').style.backgroundPositionY = `${
+      ++gameState.bgPosition / 100
+    }%`
   }
 
   function restartGame() {

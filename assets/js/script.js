@@ -20,16 +20,16 @@ function main() {
   }
 
   const roundSpecificData = [
-    { color: '#ffb700', maxMeteors: 40 },
-    { color: '#ffaa00', maxMeteors: 80 },
-    { color: '#ff9d00', maxMeteors: 100 },
-    { color: '#ff8f00', maxMeteors: 160 },
-    { color: '#ff8100', maxMeteors: 200 },
-    { color: '#ff7100', maxMeteors: 250 },
-    { color: '#ff6100', maxMeteors: 300 },
-    { color: '#fe4d00', maxMeteors: 500 },
-    { color: '#fd3500', maxMeteors: 1000 },
-    { color: '#fb0404', maxMeteors: 1500 },
+    { color: '#ffb700', totalMeteors: 40, maxMeteors: 10 },
+    { color: '#ffaa00', totalMeteors: 80, maxMeteors: 15 },
+    { color: '#ff9d00', totalMeteors: 100, maxMeteors: 20 },
+    { color: '#ff8f00', totalMeteors: 160, maxMeteors: 30 },
+    { color: '#ff8100', totalMeteors: 200, maxMeteors: 45 },
+    { color: '#ff7100', totalMeteors: 250, maxMeteors: 60 },
+    { color: '#ff6100', totalMeteors: 300, maxMeteors: 100 },
+    { color: '#fe4d00', totalMeteors: 500, maxMeteors: 100 },
+    { color: '#fd3500', totalMeteors: 1000, maxMeteors: 100 },
+    { color: '#fb0404', totalMeteors: 2000, maxMeteors: 100 },
   ]
 
   const initialGameState = { ...gameState }
@@ -274,7 +274,10 @@ function main() {
   }
 
   function increaseRound() {
-    if (gameState.totalMeteorCount === 40) {
+    if (
+      gameState.totalMeteorCount ===
+      roundSpecificData[gameState.round - 1].totalMeteors
+    ) {
       gameState.roundOver = true
       gameState.currentMaximumMeteorCount = 0
     }

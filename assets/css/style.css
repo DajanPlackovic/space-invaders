@@ -104,8 +104,9 @@ button:hover {
   background-size: auto 100000%;
   font-size: max(1em, 2vw);
   color: white;
-  width: 300px;
-  height: 500px;
+  height: clamp(500px, 80vh, 700px);
+  min-width: 300px;
+  aspect-ratio: 3/5;
   position: relative;
   overflow: hidden;
   display: flex;
@@ -190,7 +191,7 @@ button:hover {
   grid-column: 3;
 }
 
-@media screen and (min-width: 768px) {
+/* @media screen and (min-width: 768px) {
   #game-area {
     width: 500px;
   }
@@ -200,7 +201,7 @@ button:hover {
   #game-area {
     width: 700px;
   }
-}
+} */
 
 @media screen and (max-height: 600px) {
   body {

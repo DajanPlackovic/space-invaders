@@ -143,7 +143,6 @@ button:hover {
 #message {
   display: none;
   color: #ffb700;
-  font-size: larger;
   z-index: 10;
 }
 

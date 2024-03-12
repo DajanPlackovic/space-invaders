@@ -349,10 +349,5 @@ function main() {
       gameState.safety = 5
       gameState.moveSafetyLeft = false
     }
-
-    // document.getElementById('safety_test').style.left = `${gameState.safety}%`
-    // ship.style.left = `${gameState.safety + 5}%`
-    // ship.style.top = '0'
-    // ship.style.bottom = 'auto'
   }
 }

@@ -195,18 +195,6 @@ button:active {
   grid-column: 3;
 }
 
-/* @media screen and (min-width: 768px) {
-  #game-area {
-    width: 500px;
-  }
-}
-
-@media screen and (min-width: 1024px) {
-  #game-area {
-    width: 700px;
-  }
-} */
-
 @media screen and (max-height: 600px) {
   body {
     flex-direction: row;

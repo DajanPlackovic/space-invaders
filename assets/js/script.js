@@ -15,20 +15,21 @@ function main() {
     moveSafetyLeft: Math.random() > 0.5,
     moveSafetySteps: Math.ceil(Math.random() * 20 + 5),
     round: 1,
+    roundOver: false,
     bgPosition: 0,
   }
 
-  const roundColors = [
-    '#ffb700',
-    '#ffaa00',
-    '#ff9d00',
-    '#ff8f00',
-    '#ff8100',
-    '#ff7100',
-    '#ff6100',
-    '#fe4d00',
-    '#fd3500',
-    '#fb0404',
+  const roundSpecificData = [
+    { color: '#ffb700', maxMeteors: 40 },
+    { color: '#ffaa00', maxMeteors: 80 },
+    { color: '#ff9d00', maxMeteors: 100 },
+    { color: '#ff8f00', maxMeteors: 160 },
+    { color: '#ff8100', maxMeteors: 200 },
+    { color: '#ff7100', maxMeteors: 250 },
+    { color: '#ff6100', maxMeteors: 300 },
+    { color: '#fe4d00', maxMeteors: 500 },
+    { color: '#fd3500', maxMeteors: 1000 },
+    { color: '#fb0404', maxMeteors: 1500 },
   ]
 
   const initialGameState = { ...gameState }
@@ -66,9 +67,9 @@ function main() {
     increaseRound()
     moveSafety()
 
-    document.getElementById('game-area').style.backgroundPositionY = `${
-      ++gameState.bgPosition / 100
-    }%`
+    document.getElementById(
+      'game-area'
+    ).style.backgroundPositionY = `++gameState.bgPosition`
   }
 
   function restartGame() {
@@ -108,7 +109,7 @@ function main() {
       let newMeteor = document.createElement('div')
       newMeteor.className = 'meteor'
       newMeteor.style.top = '-30px'
-      newMeteor.style.color = roundColors[gameState.round - 1]
+      newMeteor.style.color = roundSpecificData[gameState.round - 1].color
 
       let position = Math.random() * 90 + 5
       if (Math.abs(position - gameState.safety) < 7) {
@@ -274,6 +275,13 @@ function main() {
 
   function increaseRound() {
     if (gameState.totalMeteorCount === 40) {
+      gameState.roundOver = true
+      gameState.currentMaximumMeteorCount = 0
+    }
+
+    if (gameState.roundOver === true && gameState.currentMeteorCount === 0) {
+      gameState.roundOver = false
+
       clearInterval(gameLoop)
 
       gameState.round++
@@ -281,17 +289,18 @@ function main() {
       if (gameState.round === 20) {
         displayRestartGameMessage('Congratulations! You won!')
       } else {
-        gameState.currentMaximumMeteorCount++
         gameState.totalMeteorCount = 0
-        gameState.tickFrequency--
-        gameState.meteorSpeed++
 
         message.innerHTML = `Round ${gameState.round}`
         message.classList.add('show')
-        message.style.color = roundColors[gameState.round - 1]
+        message.style.color = roundSpecificData[gameState.round - 1].color
         setTimeout(() => {
           message.classList.remove('show')
-        }, 1000)
+          gameState.currentMaximumMeteorCount =
+            roundSpecificData[gameState.round - 1].maxMeteors
+          gameState.meteorSpeed++
+          gameState.tickFrequency--
+        }, 3000)
 
         startLoop(tick, gameState.tickFrequency)
       }

@@ -104,7 +104,7 @@ button:hover {
   background-size: auto 100000%;
   font-size: max(1em, 2vw);
   color: white;
-  height: 70vh;
+  height: max(70vh, 500px);
   min-width: 300px;
   aspect-ratio: 3/5;
   position: relative;
@@ -118,7 +118,7 @@ button:hover {
   color: white;
   position: absolute;
   transform: translateX(-50%) rotate(-45deg);
-  font-size: 30px;
+  font-size: max(30px, 3vh);
 }
 
 #ship.left {
@@ -133,7 +133,7 @@ button:hover {
   color: red;
   transform: rotate(-45deg);
   position: absolute;
-  font-size: 30px;
+  font-size: max(30px, 3vh);
 }
 
 #message {

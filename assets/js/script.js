@@ -15,6 +15,7 @@ function main() {
     moveSafetyLeft: Math.random() > 0.5,
     moveSafetySteps: Math.ceil(Math.random() * 20 + 5),
     round: 1,
+    bgPosition: 0,
   }
 
   const roundColors = [
@@ -61,9 +62,13 @@ function main() {
     moveMeteors()
     moveShip()
     animateShip()
-    detectCollisions()
+    // detectCollisions()
     increaseRound()
     moveSafety()
+
+    document.getElementById('game-area').style.backgroundPositionY = `${
+      ++gameState.bgPosition / 100
+    }%`
   }
 
   function restartGame() {

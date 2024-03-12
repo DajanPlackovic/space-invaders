@@ -20,16 +20,16 @@ function main() {
   }
 
   const roundSpecificData = [
-    { color: '#ffb700', totalMeteors: 40, maxMeteors: 10 },
-    { color: '#ffaa00', totalMeteors: 80, maxMeteors: 15 },
-    { color: '#ff9d00', totalMeteors: 100, maxMeteors: 20 },
-    { color: '#ff8f00', totalMeteors: 160, maxMeteors: 30 },
-    { color: '#ff8100', totalMeteors: 200, maxMeteors: 45 },
-    { color: '#ff7100', totalMeteors: 250, maxMeteors: 60 },
-    { color: '#ff6100', totalMeteors: 300, maxMeteors: 100 },
-    { color: '#fe4d00', totalMeteors: 500, maxMeteors: 100 },
-    { color: '#fd3500', totalMeteors: 1000, maxMeteors: 100 },
-    { color: '#fb0404', totalMeteors: 2000, maxMeteors: 100 },
+    { color: '#ffb700', totalMeteors: 40, maxMeteors: 10, safety: 17 },
+    { color: '#ffaa00', totalMeteors: 80, maxMeteors: 15, safety: 15 },
+    { color: '#ff9d00', totalMeteors: 100, maxMeteors: 20, safety: 15 },
+    { color: '#ff8f00', totalMeteors: 160, maxMeteors: 30, safety: 12 },
+    { color: '#ff8100', totalMeteors: 200, maxMeteors: 45, safety: 12 },
+    { color: '#ff7100', totalMeteors: 250, maxMeteors: 60, safety: 10 },
+    { color: '#ff6100', totalMeteors: 300, maxMeteors: 100, safety: 10 },
+    { color: '#fe4d00', totalMeteors: 500, maxMeteors: 100, safety: 8 },
+    { color: '#fd3500', totalMeteors: 1000, maxMeteors: 100, safety: 8 },
+    { color: '#fb0404', totalMeteors: 2000, maxMeteors: 100, safety: 8 },
   ]
 
   const initialGameState = { ...gameState }
@@ -112,8 +112,13 @@ function main() {
       newMeteor.style.color = roundSpecificData[gameState.round - 1].color
 
       let position = Math.random() * 90 + 5
-      if (Math.abs(position - gameState.safety) < 7) {
-        position += 7 * Math.sign(position - gameState.safety)
+      if (
+        Math.abs(position - gameState.safety) <
+        roundSpecificData[gameState.round - 1].safety
+      ) {
+        position +=
+          roundSpecificData[gameState.round - 1].safety *
+          Math.sign(position - gameState.safety)
       }
       newMeteor.style.left = `${position}%`
 

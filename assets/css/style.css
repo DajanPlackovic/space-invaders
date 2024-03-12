@@ -8,8 +8,7 @@
 body {
   display: flex;
   min-height: 100vh;
-  background: url('../images/pexels-hristo-fidanov-1252890.webp') center
-    no-repeat;
+  background: linear-gradient(black 0%, blue 100%);
   background-size: cover;
   flex-direction: column;
   justify-content: center;

@@ -67,7 +67,7 @@ function main() {
 
     document.getElementById(
       'game-area'
-    ).style.backgroundPositionY = `++gameState.bgPosition`
+    ).style.backgroundPositionY = `${++gameState.bgPosition}%`
   }
 
   function restartGame() {

@@ -62,7 +62,7 @@ function main() {
     moveMeteors()
     moveShip()
     animateShip()
-    // detectCollisions()
+    detectCollisions()
     increaseRound()
     moveSafety()
 

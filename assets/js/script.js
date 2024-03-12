@@ -108,7 +108,7 @@ function main() {
       gameState.totalMeteorCount++
       let newMeteor = document.createElement('div')
       newMeteor.className = 'meteor'
-      newMeteor.style.top = '-30px'
+      newMeteor.style.top = '-10%'
       newMeteor.style.color = roundSpecificData[gameState.round - 1].color
 
       let position = Math.random() * 90 + 5
@@ -131,19 +131,15 @@ function main() {
    * Moves meteors down towards the bottom of the game area
    */
   function moveMeteors() {
-    const disappearingHeight =
-      +window
-        .getComputedStyle(document.getElementById('game-area'))
-        .height.slice(0, -2) * 1.1 // 10% added onto height as meteor disappears a little too early otherwise
     const meteors = document.getElementsByClassName('meteor')
 
     for (meteor of meteors) {
-      const newTop = +meteor.style.top.slice(0, -2) + gameState.meteorSpeed
-      if (newTop > disappearingHeight) {
+      const newTop = +meteor.style.top.slice(0, -1) + gameState.meteorSpeed / 6
+      if (newTop > 110) {
         gameState.currentMeteorCount--
         meteor.remove()
       } else {
-        meteor.style.top = `${newTop}px`
+        meteor.style.top = `${newTop}%`
       }
     }
   }

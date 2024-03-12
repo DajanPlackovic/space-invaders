@@ -153,7 +153,7 @@ button:hover {
 
 /* Controls styling */
 #controls {
-  height: calc(100vh - max(500px, 75vh));
+  height: calc(100vh - max(500px, 80vh));
   display: grid;
   grid-template: repeat(3, 1fr) / repeat(3, 1fr);
 }

@@ -2,8 +2,6 @@ document.addEventListener('DOMContentLoaded', main)
 
 function main() {
   let gameState = {
-    moveUp: false,
-    moveDown: false,
     moveLeft: false,
     moveRight: false,
     currentMeteorCount: 0,
@@ -160,10 +158,6 @@ function main() {
     }
 
     const keyMap = {
-      w: 'moveUp',
-      arrowup: 'moveUp',
-      s: 'moveDown',
-      arrowdown: 'moveDown',
       a: 'moveLeft',
       arrowleft: 'moveLeft',
       d: 'moveRight',
@@ -202,8 +196,6 @@ function main() {
     let outcome = { bottom: 0, left: 0 }
 
     const directionMapping = {
-      moveUp: { bottom: 1.5, left: 0 },
-      moveDown: { bottom: -1.5, left: 0 },
       moveLeft: { bottom: 0, left: -1.5 },
       moveRight: { bottom: 0, left: 1.5 },
     }

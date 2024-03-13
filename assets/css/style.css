@@ -156,14 +156,15 @@ button:active {
 
 /* Controls styling */
 #controls {
-  height: calc(100vh - max(500px, 80vh));
+  height: calc(95vh - max(500px, 80vh));
+  width: max(300px, 44vh);
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
 }
 
 .control {
   aspect-ratio: 1 / 1;
-  width: max(100px, 10vw);
+  width: 45%;
   font-size: clamp(1.5em, 2.5vh, 2em);
 }
 

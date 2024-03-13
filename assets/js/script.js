@@ -19,15 +19,10 @@ function main() {
 
   const roundSpecificData = [
     { color: '#ffb700', totalMeteors: 40, maxMeteors: 10, safety: 17 },
-    { color: '#ffaa00', totalMeteors: 80, maxMeteors: 15, safety: 15 },
-    { color: '#ff9d00', totalMeteors: 100, maxMeteors: 20, safety: 15 },
-    { color: '#ff8f00', totalMeteors: 160, maxMeteors: 30, safety: 12 },
-    { color: '#ff8100', totalMeteors: 200, maxMeteors: 45, safety: 12 },
-    { color: '#ff7100', totalMeteors: 250, maxMeteors: 60, safety: 10 },
-    { color: '#ff6100', totalMeteors: 300, maxMeteors: 100, safety: 10 },
-    { color: '#fe4d00', totalMeteors: 500, maxMeteors: 100, safety: 8 },
-    { color: '#fd3500', totalMeteors: 1000, maxMeteors: 100, safety: 8 },
-    { color: '#fb0404', totalMeteors: 2000, maxMeteors: 100, safety: 8 },
+    { color: '#ff9d00', totalMeteors: 80, maxMeteors: 15, safety: 15 },
+    { color: '#ff8100', totalMeteors: 100, maxMeteors: 20, safety: 15 },
+    { color: '#ff6100', totalMeteors: 160, maxMeteors: 30, safety: 12 },
+    { color: '#fd3500', totalMeteors: 200, maxMeteors: 45, safety: 12 },
   ];
 
   const initialGameState = { ...gameState };
@@ -277,7 +272,7 @@ function main() {
 
       gameState.round++;
 
-      if (gameState.round === 2) {
+      if (gameState.round === 6) {
         endingAnimation();
       } else {
         gameState.totalMeteorCount = 0;

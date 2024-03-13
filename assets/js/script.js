@@ -274,7 +274,7 @@ function main() {
 
       gameState.round++;
 
-      if (gameState.round === 20) {
+      if (gameState.round === 6) {
         displayRestartGameMessage('Congratulations! You won!');
       } else {
         gameState.totalMeteorCount = 0;

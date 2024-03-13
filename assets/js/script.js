@@ -76,10 +76,13 @@ function main() {
       meteors[0].remove();
     }
 
+    document.getElementsByClassName('homeworld')?.[0]?.remove();
+
     gameState = { ...initialGameState };
 
     ship.style.left = '50%';
     ship.style.bottom = '5%';
+    ship.classList.remove('ending');
 
     message.classList.remove('show');
     message.classList.remove('hit-message');
@@ -274,8 +277,8 @@ function main() {
 
       gameState.round++;
 
-      if (gameState.round === 6) {
-        displayRestartGameMessage('Congratulations! You won!');
+      if (gameState.round === 2) {
+        endingAnimation();
       } else {
         gameState.totalMeteorCount = 0;
 

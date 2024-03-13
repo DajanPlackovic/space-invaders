@@ -216,3 +216,41 @@ button:active {
     -webkit-text-fill-color: transparent;
   }
 }
+
+/* Ending animation */
+.homeworld {
+  position: absolute;
+  font-size: 50vh;
+  animation: homeworld 2s ease-in-out forwards;
+}
+
+.ending {
+  animation: ending 3s ease-in forwards;
+}
+
+@keyframes homeworld {
+  0% {
+    top: -50vh;
+  }
+
+  100% {
+    top: -10vh;
+  }
+}
+
+@keyframes ending {
+  0% {
+    bottom: 5%;
+    transform: translateX(-50%) rotate(-45deg);
+  }
+
+  50% {
+    bottom: 5%;
+    transform: translateX(-50%) rotate(-45deg);
+  }
+
+  100% {
+    bottom: 85%;
+    transform: translateX(-50%) rotate(-45deg) scale(0.1);
+  }
+}

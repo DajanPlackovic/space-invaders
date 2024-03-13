@@ -342,4 +342,19 @@ function main() {
       gameState.moveSafetyLeft = false;
     }
   }
+
+  function endingAnimation() {
+    const homeworld = document.createElement('i');
+
+    homeworld.className = 'fa-solid fa-earth-oceania homeworld';
+
+    ship.classList.add('ending');
+
+    document.getElementById('game-area').appendChild(homeworld);
+
+    setTimeout(
+      () => displayRestartGameMessage('Congratulations! You won!'),
+      3000
+    );
+  }
 }

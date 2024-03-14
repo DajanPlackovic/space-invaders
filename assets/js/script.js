@@ -51,12 +51,12 @@ function main() {
    * Modifies display based on game state every tick
    */
   function tick() {
+    increaseRound();
     createMeteor();
     moveMeteors();
     moveShip();
     animateShip();
-    // detectCollisions();
-    increaseRound();
+    detectCollisions();
     moveSafety();
 
     document.getElementById('game-area').style.backgroundPositionY = `${

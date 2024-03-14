@@ -25,7 +25,8 @@ function main() {
     { color: '#fd3500', totalMeteors: 200, maxMeteors: 45, safety: 12 },
   ];
 
-  const initialGameState = { ...gameState };
+  const initialGameState = {};
+  Object.assign(initialGameState, gameState);
 
   this.addEventListener('keydown', controlShipStart);
   this.addEventListener('keyup', controlShipStop);
@@ -71,9 +72,12 @@ function main() {
       meteors[0].remove();
     }
 
-    document.getElementsByClassName('homeworld')?.[0]?.remove();
+    const homeworld = document.getElementsByClassName('homeworld');
+    if (homeworld[0]) {
+      homeworld[0].remove();
+    }
 
-    gameState = { ...initialGameState };
+    Object.assign(gameState, initialGameState);
 
     ship.style.left = '50%';
     ship.style.bottom = '5%';
@@ -222,8 +226,8 @@ function main() {
       const meteorHitbox = makeHitbox(meteor);
 
       const calculatedDistance = Math.sqrt(
-        (shipHitbox.x - meteorHitbox.x) ** 2 +
-          (shipHitbox.y - meteorHitbox.y) ** 2
+        Math.pow(shipHitbox.x - meteorHitbox.x, 2) +
+          Math.pow(shipHitbox.y - meteorHitbox.y, 2)
       );
 
       if (calculatedDistance < shipHitbox.r + meteorHitbox.r) {

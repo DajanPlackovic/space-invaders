@@ -25,12 +25,12 @@ button {
   margin: 0.3em;
   cursor: pointer;
   /* From https://css.glass */
-  background: rgba(1, 1, 1, 0.53);
+  background: #01010187;
   border-radius: 4px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 30px #0000001a;
   backdrop-filter: blur(15.8px);
   -webkit-backdrop-filter: blur(15.8px);
-  border: 1px solid rgba(1, 1, 1, 0.42);
+  border: 1px solid #0101016b;
   transition: all 200ms ease-in-out;
 }
 
@@ -59,12 +59,12 @@ button:active {
   font-weight: 900;
   text-align: center;
   /* From https://css.glass */
-  background: rgba(255, 255, 255, 0.19);
+  background: #ffffff30;
   border-radius: 16px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 30px #0000001a;
   backdrop-filter: blur(13.4px);
   -webkit-backdrop-filter: blur(13.4px);
-  border: 1px solid rgba(255, 255, 255, 0.42);
+  border: 1px solid #ffffff6b;
 }
 
 #message:not(.hit-message) {
@@ -119,13 +119,8 @@ button:active {
 
 /* Game styles */
 #game-area {
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    56deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 9, 121, 1) 67%,
-    rgba(1, 100, 120, 1) 100%
-  );
+  background: #020024;
+  background: linear-gradient(56deg, #020024 0%, #090979 67%, #016478 100%);
   background-size: auto 100000%;
   font-size: max(1em, 2vw);
   color: white;
@@ -138,8 +133,8 @@ button:active {
   justify-content: center;
   align-items: center;
   border-radius: 4px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-  border: 1px solid rgba(1, 1, 1, 0.42);
+  box-shadow: 0 4px 30px #0000001a;
+  border: 1px solid #0101016b;
 }
 
 #ship {

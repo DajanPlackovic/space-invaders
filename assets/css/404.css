@@ -1,0 +1,20 @@
+body {
+  background: url('../images/area-51.jpg') no-repeat center center fixed;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+#message {
+  color: white;
+  font-size: 1.5em;
+  text-align: center;
+  width: 80%;
+}
+
+button {
+  text-transform: uppercase;
+}

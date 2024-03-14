@@ -71,16 +71,17 @@ button:active {
   z-index: 1000;
   height: 90%;
   width: 90%;
+  font-weight: 900;
 }
 
 #menu > h1,
 #menu > ul {
-  background-color: #ffcb43;
-  background-image: linear-gradient(
-    319deg,
-    #ffcb43 0%,
-    #ff6425 37%,
-    #ff0016 100%
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    56deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 67%,
+    rgba(2, 0, 36, 1) 100%
   );
   background-clip: text;
   color: transparent;

@@ -330,13 +330,15 @@ function main() {
       gameState.safety -= 0.5;
     }
 
-    if (gameState.safety > 95) {
-      gameState.safety = 95;
+    const safetyOutOfBounds = roundSpecificData[gameState.round - 1].safety;
+
+    if (gameState.safety > 100 - safetyOutOfBounds) {
+      gameState.safety = 100 - safetyOutOfBounds;
       gameState.moveSafetyLeft = true;
     }
 
-    if (gameState.safety < 5) {
-      gameState.safety = 5;
+    if (gameState.safety < safetyOutOfBounds) {
+      gameState.safety = safetyOutOfBounds;
       gameState.moveSafetyLeft = false;
     }
   }

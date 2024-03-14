@@ -373,7 +373,7 @@ function main() {
     `;
 
     menuButton.addEventListener('click', () => {
-      menuText.innerHTML = `<p>To get back home, however, his starship needs to make it through five meteor showers between earth and his homeworld, coincidentally also called Neva'Da.</p>
+      menuText.innerHTML = `<p>To get back home, his starship needs to make it through five meteor showers between earth and his homeworld, coincidentally also called Neva'Da.</p>
      <p>Help Glarp get home.</p>`;
       menuButton.addEventListener('click', () => {
         menuText.innerHTML = `

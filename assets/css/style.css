@@ -157,6 +157,7 @@ button:active {
 /* Controls styling */
 #controls {
   height: calc(95vh - max(500px, 80vh));
+  min-height: 75px;
   width: max(300px, 44vh);
   display: flex;
   justify-content: space-around;

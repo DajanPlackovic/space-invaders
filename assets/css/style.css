@@ -20,7 +20,7 @@ body {
 button {
   color: #fff;
   font-family: inherit;
-  font-size: min(10vw, 7vh);
+  font-size: 2.5rem;
   padding: 0.2em 0.5em;
   margin: 0.3em;
   cursor: pointer;

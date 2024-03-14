@@ -89,18 +89,18 @@ button:active {
   position: absolute;
   top: 0.5rem;
   font-size: 2.5rem;
-  background: rgb(2, 0, 36);
-  background: linear-gradient(
-    56deg,
-    rgba(2, 0, 36, 1) 0%,
-    rgba(9, 9, 121, 1) 67%,
-    rgba(2, 0, 36, 1) 100%
-  );
   background-clip: text;
   color: transparent;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-transform: uppercase;
+  background-color: #ffcb43;
+  background-image: linear-gradient(
+    319deg,
+    #ffcb43 0%,
+    #ff6425 37%,
+    #ff0016 100%
+  );
 }
 
 #menu ul {
@@ -299,7 +299,7 @@ button:active {
 
 #warning > p {
   text-align: center;
-  line-height: 2.5rem;
+  line-height: 1.5rem;
 }
 
 #warning.show {

@@ -44,10 +44,7 @@ function main() {
   const ship = document.getElementById('ship');
   const message = document.getElementById('message');
 
-  document.getElementById('start-button').addEventListener('click', () => {
-    restartGame();
-    document.getElementById('menu').style = 'display: none;';
-  });
+  intro();
 
   /**
    * Modifies display based on game state every tick
@@ -57,7 +54,7 @@ function main() {
     moveMeteors();
     moveShip();
     animateShip();
-    detectCollisions();
+    // detectCollisions();
     increaseRound();
     moveSafety();
 
@@ -276,7 +273,7 @@ function main() {
 
       gameState.round++;
 
-      if (gameState.round === 6) {
+      if (gameState.round === 2) {
         endingAnimation();
       } else {
         gameState.totalMeteorCount = 0;
@@ -360,5 +357,23 @@ function main() {
       () => displayRestartGameMessage('Congratulations! You won!'),
       3000
     );
+  }
+
+  function intro() {
+    const title = document.querySelector('#menu > h1');
+    const glarpFace = document.getElementById('glarp-face');
+    const menuText = document.getElementById('menu-text');
+
+    menuText.innerHTML = `
+    <ul>
+      <li>Test</li>
+    </ul>
+    <button id="start-button">Start Game</button>
+    `;
+
+    document.getElementById('start-button').addEventListener('click', () => {
+      restartGame();
+      document.getElementById('menu').style = 'display: none;';
+    });
   }
 }

@@ -75,7 +75,7 @@ button:active {
 }
 
 #menu > h1,
-#menu > ul {
+#menu ul {
   background: rgb(2, 0, 36);
   background: linear-gradient(
     56deg,
@@ -87,6 +87,10 @@ button:active {
   color: transparent;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+#menu > h1 {
+  text-transform: uppercase;
 }
 
 #menu > ul {
@@ -243,4 +247,8 @@ button:active {
     bottom: 85%;
     transform: translateX(-50%) rotate(-45deg) scale(0.1);
   }
+}
+
+#glarp-face {
+  height: 45%;
 }

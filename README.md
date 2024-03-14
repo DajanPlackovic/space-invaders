@@ -43,3 +43,4 @@ Glass effect from: https://css.glass/
 Text mask from: https://www.frontendhero.dev/tutorial/mask-text-with-image/
 Text gradient: https://www.eggradients.com/gradient/empty-words
 Generate round colors: https://colordesigner.io/gradient-generator
+Alien face: https://www.freepik.com/free-vector/cute-cartoon-alien-mascot_136485033.htm#fromView=search&page=1&position=14&uuid=fcf838f2-5877-4fbe-bfd8-24a8ac031f57

@@ -51,7 +51,7 @@ button:active {
 #menu,
 #message {
   padding: 0.25rem 0.5rem;
-  font-size: max(18px, 3.5vh);
+  font-size: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -84,6 +84,7 @@ button:active {
 #menu > h1 {
   position: absolute;
   top: 0.5rem;
+  font-size: 2.5rem;
   background: rgb(2, 0, 36);
   background: linear-gradient(
     56deg,

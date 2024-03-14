@@ -274,7 +274,7 @@ function main() {
 
       gameState.round++;
 
-      if (gameState.round === 2) {
+      if (gameState.round > 5) {
         endingAnimation();
       } else {
         gameState.totalMeteorCount = 0;

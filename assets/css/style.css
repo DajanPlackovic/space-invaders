@@ -74,7 +74,7 @@ button:active {
 /* Menu styles */
 #menu {
   position: absolute;
-  z-index: 1000;
+  z-index: 100;
   height: 90%;
   width: 90%;
 }
@@ -279,4 +279,29 @@ button:active {
   position: absolute;
   z-index: -1;
   animation: fade-in 3s ease-in forwards;
+}
+
+#warning {
+  background: #000;
+  color: white;
+  font-size: 2rem;
+  width: 100vw;
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  z-index: 2000;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+#warning > p {
+  text-align: center;
+  line-height: 2.5rem;
+}
+
+#warning.show {
+  display: flex;
 }

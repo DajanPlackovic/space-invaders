@@ -355,14 +355,15 @@ function main() {
     document.getElementById('game-area').appendChild(homeworld);
 
     setTimeout(
-      () => displayRestartGameMessage('Congratulations! You won!'),
+      () =>
+        displayRestartGameMessage(
+          '<p>You made it!</p><p>Glarp thanks you!</p>'
+        ),
       3000
     );
   }
 
   function intro() {
-    const title = document.querySelector('#menu > h1');
-    const glarpFace = document.getElementById('glarp-face');
     const menuText = document.getElementById('menu-text');
     const menuButton = document.getElementById('menu-button');
 

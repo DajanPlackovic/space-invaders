@@ -44,3 +44,4 @@ Text mask from: https://www.frontendhero.dev/tutorial/mask-text-with-image/
 Text gradient: https://www.eggradients.com/gradient/empty-words
 Generate round colors: https://colordesigner.io/gradient-generator
 Alien face: https://www.freepik.com/free-vector/cute-cartoon-alien-mascot_136485033.htm#fromView=search&page=1&position=14&uuid=fcf838f2-5877-4fbe-bfd8-24a8ac031f57
+Check if landscape: https://dev.to/dcodeyt/the-easiest-way-to-detect-device-orientation-in-javascript-7d7#:~:text=Detect%20Portait%2FLandscape%20Mode%20with,must%20be%20in%20landscape%20mode.

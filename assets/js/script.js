@@ -45,6 +45,20 @@ function main() {
   const ship = document.getElementById('ship');
   const message = document.getElementById('message');
 
+  window
+    .matchMedia('(orientation: portrait')
+    .addEventListener('change', (event) => {
+      if (event.matches) {
+        startLoop();
+        message.classList.remove('show');
+      } else {
+        if (gameLoop) clearInterval(gameLoop);
+        message.innerHTML =
+          '<p>The game can only be played in portrait mode at this time.</p><p>Please switch to portrait to continue.</p>';
+        message.classList.add('show');
+      }
+    });
+
   intro();
 
   /**

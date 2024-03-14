@@ -23,7 +23,7 @@ function main() {
     { color: '#ff9d00', totalMeteors: 80, maxMeteors: 15, safety: 15 },
     { color: '#ff8100', totalMeteors: 100, maxMeteors: 20, safety: 15 },
     { color: '#ff6100', totalMeteors: 160, maxMeteors: 30, safety: 12 },
-    { color: '#fd3500', totalMeteors: 200, maxMeteors: 45, safety: 12 },
+    { color: '#fd3500', totalMeteors: 200, maxMeteors: 45, safety: 15 },
   ];
 
   const initialGameState = {};

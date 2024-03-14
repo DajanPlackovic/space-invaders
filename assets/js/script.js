@@ -221,6 +221,9 @@ function main() {
     const meteors = document.getElementsByClassName('meteor');
 
     for (const meteor of meteors) {
+      const innerRound = gameState.round;
+      const innerDisplay = displayRestartGameMessage;
+
       const meteorHitbox = makeHitbox(meteor);
 
       const calculatedDistance = Math.sqrt(
@@ -232,10 +235,7 @@ function main() {
         meteor.innerHTML = '<i class="fa-solid fa-burst"></i>';
         clearInterval(gameLoop);
         setTimeout(
-          () =>
-            displayRestartGameMessage(
-              `You made it to Wave ${gameState.round}!`
-            ),
+          () => innerDisplay(`You made it to Wave ${innerRound}!`),
           1000
         );
       }

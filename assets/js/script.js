@@ -12,12 +12,13 @@ function main() {
     safety: Math.random() * 90 + 5,
     moveSafetyLeft: Math.random() > 0.5,
     moveSafetySteps: Math.ceil(Math.random() * 20 + 5),
-    round: 1,
+    round: 0,
     roundOver: false,
     bgPosition: 0,
   };
 
   const roundSpecificData = [
+    { color: undefined, totalMeteors: 0, maxMeteors: 0, safety: 0 },
     { color: '#ffb700', totalMeteors: 40, maxMeteors: 10, safety: 17 },
     { color: '#ff9d00', totalMeteors: 80, maxMeteors: 15, safety: 15 },
     { color: '#ff8100', totalMeteors: 100, maxMeteors: 20, safety: 15 },
@@ -106,15 +107,15 @@ function main() {
       let newMeteor = document.createElement('div');
       newMeteor.className = 'meteor';
       newMeteor.style.top = '-10%';
-      newMeteor.style.color = roundSpecificData[gameState.round - 1].color;
+      newMeteor.style.color = roundSpecificData[gameState.round].color;
 
       let position = Math.random() * 90 + 5;
       if (
         Math.abs(position - gameState.safety) <
-        roundSpecificData[gameState.round - 1].safety
+        roundSpecificData[gameState.round].safety
       ) {
         position +=
-          roundSpecificData[gameState.round - 1].safety *
+          roundSpecificData[gameState.round].safety *
           Math.sign(position - gameState.safety);
       }
       newMeteor.style.left = `${position}%`;
@@ -233,7 +234,7 @@ function main() {
         setTimeout(
           () =>
             displayRestartGameMessage(
-              `You made it to Round ${gameState.round}!`
+              `You made it to Wave ${gameState.round}!`
             ),
           1000
         );
@@ -260,7 +261,7 @@ function main() {
   function increaseRound() {
     if (
       gameState.totalMeteorCount ===
-      roundSpecificData[gameState.round - 1].totalMeteors
+      roundSpecificData[gameState.round].totalMeteors
     ) {
       gameState.roundOver = true;
       gameState.currentMaximumMeteorCount = 0;
@@ -278,13 +279,13 @@ function main() {
       } else {
         gameState.totalMeteorCount = 0;
 
-        message.innerHTML = `Round ${gameState.round}`;
+        message.innerHTML = `Wave ${gameState.round}`;
         message.classList.add('show');
-        message.style.color = roundSpecificData[gameState.round - 1].color;
+        message.style.color = roundSpecificData[gameState.round].color;
         setTimeout(() => {
           message.classList.remove('show');
           gameState.currentMaximumMeteorCount =
-            roundSpecificData[gameState.round - 1].maxMeteors;
+            roundSpecificData[gameState.round].maxMeteors;
           gameState.meteorSpeed++;
           gameState.tickFrequency--;
         }, 3000);
@@ -331,7 +332,7 @@ function main() {
       gameState.safety -= 0.5;
     }
 
-    const safetyOutOfBounds = roundSpecificData[gameState.round - 1].safety;
+    const safetyOutOfBounds = roundSpecificData[gameState.round].safety;
 
     if (gameState.safety > 100 - safetyOutOfBounds) {
       gameState.safety = 100 - safetyOutOfBounds;
@@ -363,17 +364,32 @@ function main() {
     const title = document.querySelector('#menu > h1');
     const glarpFace = document.getElementById('glarp-face');
     const menuText = document.getElementById('menu-text');
+    const menuButton = document.getElementById('menu-button');
 
     menuText.innerHTML = `
-    <ul>
-      <li>Test</li>
-    </ul>
-    <button id="start-button">Start Game</button>
+    <p>This is Glarp.</p>
+    <p>He's just escaped from some awful place full of hyperevolved monkeys in a state called Neva'Da.</p>
     `;
 
-    document.getElementById('start-button').addEventListener('click', () => {
-      restartGame();
-      document.getElementById('menu').style = 'display: none;';
+    menuButton.addEventListener('click', () => {
+      menuText.innerHTML = `<p>To get back home, however, his starship needs to make it through five meteor showers between earth and his homeworld, coincidentally also called Neva'Da.</p>
+     <p>Help Glarp get home.</p>`;
+      menuButton.addEventListener('click', () => {
+        menuText.innerHTML = `
+  <ul>
+    <li>Avoid meteors</li>
+    <li>Use ← and →, A and D or the on-screen arrows to navigate the ship</li>
+    <li>As you get closer to Neva'Da, the meteors will get faster and more numerous</li>
+  </ul>`;
+        for (const control of controls) {
+          control.classList.remove('hidden');
+        }
+        menuButton.textContent = 'Start Game';
+        menuButton.addEventListener('click', () => {
+          restartGame();
+          document.getElementById('menu').style = 'display: none;';
+        });
+      });
     });
   }
 }

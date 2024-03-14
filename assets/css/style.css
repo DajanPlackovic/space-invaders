@@ -72,10 +72,18 @@ button:active {
   height: 90%;
   width: 90%;
   font-weight: 900;
+  text-align: center;
 }
 
 #menu > h1,
-#menu ul {
+#menu ul,
+#menu p {
+  margin: 0.5rem 0;
+}
+
+#menu > h1 {
+  position: absolute;
+  top: 0.5rem;
   background: rgb(2, 0, 36);
   background: linear-gradient(
     56deg,
@@ -87,15 +95,21 @@ button:active {
   color: transparent;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-}
-
-#menu > h1 {
   text-transform: uppercase;
 }
 
-#menu > ul {
+#menu ul {
   list-style-type: none;
   text-align: center;
+}
+
+#menu ul > li {
+  margin: 0.5rem 0;
+}
+
+#menu-button {
+  position: absolute;
+  bottom: 0.5rem;
 }
 
 /* Game styles */
@@ -172,11 +186,16 @@ button:active {
   aspect-ratio: 1 / 1;
   width: 45%;
   font-size: clamp(1.5em, 2.5vh, 2em);
+  transition: opacity 0.5s ease-in-out;
 }
 
 .control,
 .control * {
   cursor: pointer;
+}
+
+.hidden {
+  opacity: 0;
 }
 
 #arrowleft {
@@ -250,5 +269,9 @@ button:active {
 }
 
 #glarp-face {
-  height: 45%;
+  height: 90%;
+  margin-top: -30%;
+  position: absolute;
+  z-index: -1;
+  animation: fade-in 3s ease-in forwards;
 }
